@@ -1,1 +1,37 @@
+node{
+  def mavenHome = tool name: "maven"
+  stage('1cloneCode'){
+    git "https://github.com/mfrimponm/maven-web-application"
+}
+	stage('build'){
+	  sh "${mavenHome}/bin/mvn clean package"
+	  //bat "${mavenHome}/bin/mvn clean package"
+}
+    stage('codeQuality'){
+	  sh "${mavenHome}/bin/mvn sonar:sonar"
+ }
+ stage('4Upload2Nexus'){
+sh "echo 'Backing up Build Artifact to Nexus'"
+sh "${mavenHome}/bin/mvn deploy"
+ }
+ stage('5deploy2AUT'){
+sh "echo 'deploy to AUT'"
+deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.159.255.143:8080/')], contextPath: null, war: 'target/*war'
+}
+stage('6approvalGate'){
+    sh "echo 'ready for review'"
+    timeout(time:5, unit:'DAYS'){
+    input message: 'Application ready for deployment, Please review and approve'
+     }
+     }
+stage('7deploy2pro'){
+  deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.159.255.143:8080/')], contextPath: null, war: 'target/*war'
+}
+stage('8emailNotification'){
+  emailext body: '''Hi All,
 
+Check Build status
+
+Landmark Technologies''', recipientProviders: [buildUser(), developers(), upstreamDevelopers(), brokenBuildSuspects(), brokenTestsSuspects(), contributor()], subject: 'build status', to: 'tesla-app@gmail.com'
+  }
+}
