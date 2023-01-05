@@ -13,8 +13,8 @@ node{
   }
  stage('4uploadArtifacts'){
     sh "${mavenHome}/bin/mvn deploy"
-    //http://3.228.8.163:8081/repository/Aaron-uat-releases/
-    //http://3.228.8.163:8081/repository/Aaron-uat-snapshots/
+    //http://3.228.8.163:8081/repository/jay-release/
+    //http://3.228.8.163:8081/repository/jay-snapshots/
     // vi pom.xml and added repository details   
     // vi setting.xml and add AUTHENTICATION details  
   } 
