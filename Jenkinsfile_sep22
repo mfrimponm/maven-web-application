@@ -10,10 +10,10 @@ node{
    
   stage('3codeQuality'){
     sh "${mavenHome}/bin/mvn  sonar:sonar"
- 
- /*
+
   }
-  stage('4uploadArtifacts'){
+  /*
+ stage('4uploadArtifacts'){
     //sh "${mavenHome}/bin/mvn deploy"
     //http://52.53.227.31:8191/landmark/repository/tesla-fe-snapshots/
     //http://52.53.227.31:8191/landmark/repository/tesla-fe-releases/
