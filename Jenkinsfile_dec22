@@ -3,7 +3,7 @@ node{
   stage('1cloneCode'){
     git "https://github.com/mfrimponm/maven-web-application"
 }
-	stage('build'){
+	stage('buildbyMoses'){
 	  sh "${mavenHome}/bin/mvn clean package"
 	  //bat "${mavenHome}/bin/mvn clean package"
 }
