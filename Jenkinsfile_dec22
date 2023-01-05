@@ -7,10 +7,11 @@ node{
 	  sh "${mavenHome}/bin/mvn clean package"
 	  //bat "${mavenHome}/bin/mvn clean package"
 }
-/*
+
     stage('codeQuality'){
 	  sh "${mavenHome}/bin/mvn sonar:sonar"
  }
+ /*
  stage('4UploadArtifacts'){
  //sh "${mavenHome/bin/mvn deploy
  //http://44.195.43.247:8081/repository/tesla1-snapshots/
