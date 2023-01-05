@@ -11,14 +11,15 @@ node{
     stage('codeQuality'){
 	  sh "${mavenHome}/bin/mvn sonar:sonar"
  }
- /*
+ 
  stage('4UploadArtifacts'){
- //sh "${mavenHome/bin/mvn deploy
+ sh "${mavenHome/bin/mvn deploy
  //http://44.195.43.247:8081/repository/tesla1-snapshots/
  //http://44.195.43.247:8081/repository/tesla1-releases/
  // vi pom.xml and added repository details
  // vi setting.xml and add AUTHENTICATION details
 }
+ /*
  stage('5deploy2AUT'){
 sh "echo 'deploy to AUT'"
 deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.159.255.143:8080/')], contextPath: null, war: 'target/*war'
