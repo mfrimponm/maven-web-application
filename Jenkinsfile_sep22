@@ -9,7 +9,7 @@ node{
   }
   
   stage('3codeQuality'){
-    sh "${mavenHome}/bin/mvn  sonar:sonar"
+    sh "${mavenHome}/bin/mvn sonar:sonar"
   }
   /*
   stage('4uploadArtifacts'){
