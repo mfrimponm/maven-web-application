@@ -13,15 +13,15 @@ node{
   }
  stage('4uploadArtifacts'){
     sh "${mavenHome}/bin/mvn deploy"
-    //http://44.211.56.43:8081/repository/Aaron-uat-releases/
-    //http://44.211.56.43:8081/repository/Aaron-uat-snapshots/
+    //http://3.237.67.71:8081/repository/Aaron-uat-releases/
+    //http://3.237.67.71:8081/repository/Aaron-uat-snapshots/
     // vi pom.xml and added repository details   
     // vi setting.xml and add AUTHENTICATION details  
   } 
   
   stage('5deploy2UAT'){
     sh "echo 'deploy to UAT'  "
-    deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://3.92.68.32:8080')], contextPath: null, war: 'target/*war'
+    deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.197.16.46:8080')], contextPath: null, war: 'target/*war'
   }
 
  stage('6approvalGate'){
@@ -31,7 +31,6 @@ node{
       }
   
   }
-  
   
   stage('7deploy2Prod'){
     sh "sleep  50"
