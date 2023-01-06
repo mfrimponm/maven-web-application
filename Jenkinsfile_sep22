@@ -38,7 +38,7 @@ node{
     deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://3.92.68.32:8080')], contextPath: null, war: 'target/*war'
   }
 
- /*
+ 
  stage('8emailNotification'){
     emailext body: '''Hi All,
 
@@ -46,5 +46,5 @@ Check Build status.
 
 Landmark Technologies''', recipientProviders: [buildUser(), developers(), upstreamDevelopers(), brokenBuildSuspects(), brokenTestsSuspects(), contributor()], subject: 'build status', to: 'tesla-app@gmail.com'
   }
-  */
+  
 }
