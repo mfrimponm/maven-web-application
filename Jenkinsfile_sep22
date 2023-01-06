@@ -27,7 +27,7 @@ node{
  stage('6approvalGate'){
     sh "echo 'ready for review' "
     timeout(time:5, unit:'DAYS') {
-    //input message: 'Application ready for deployment, Please review and approve'
+    input message: 'Application ready for deployment, Please review and approve'
       }
   
   }
