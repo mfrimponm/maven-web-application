@@ -14,15 +14,14 @@ node{
   
   stage('4uploadArtifacts'){
     //sh "${mavenHome}/bin/mvn deploy"
-    //http://52.53.227.31:8191/landmark/repository/tesla-fe-snapshots/
-    //http://52.53.227.31:8191/landmark/repository/tesla-fe-releases/
+    //http://3.237.67.71:8081/repository/Aaron-uat-snapshots/
+    //http://3.237.67.71:8081/repository/Aaron-uat-releases/
     // vi pom.xml and added repository details   
     // vi setting.xml and add AUTHENTICATION details  
   } 
    stage('5deploy2UAT'){
     sh "echo 'deploy to UAT'  "
-      }
-     
+      }  
   }
   stage('6approvalGate'){
     sh "echo 'ready for review' "
